@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员 - 欢迎来到渺渺的自助餐厅</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>👨‍💼 管理员面板</h1>
+            <div class="admin-actions">
+                <button class="back-btn" onclick="goBack()">返回点餐</button>
+                <button class="clear-btn" onclick="clearAllOrders()">清空所有订单</button>
+                <button class="clear-requests-btn" onclick="clearAllRequests()">清空所有要求</button>
+            </div>
+        </header>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-content">
+                    <h3>总订单数</h3>
+                    <div class="stat-value" id="total-orders">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                    <h3>总收入</h3>
+                    <div class="stat-value" id="total-revenue">¥0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🍽️</div>
+                <div class="stat-content">
+                    <h3>总商品数</h3>
+                    <div class="stat-value" id="total-items">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📝</div>
+                <div class="stat-content">
+                    <h3>待处理要求</h3>
+                    <div class="stat-value" id="pending-requests">0</div>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱️</div>
+                <div class="stat-content">
+                    <h3>总要求数</h3>
+                    <div class="stat-value" id="total-requests">0</div>
+                </div>
+            </div>
+        </div>
+
+        <main class="admin-main">
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchTab('orders')">订单管理</button>
+                <button class="admin-tab" onclick="switchTab('requests')">要求管理</button>
+            </div>
+            
+            <div class="admin-content">
+                <div class="orders-section" id="orders-section">
+                    <h2>📋 订单列表</h2>
+                    <div class="orders-container" id="orders-container">
+                        <div class="no-orders">暂无订单</div>
+                    </div>
+                </div>
+                
+                <div class="requests-section" id="requests-section" style="display: none;">
+                    <h2>📝 定制要求列表</h2>
+                    <div class="requests-filter">
+                        <button class="filter-btn active" onclick="filterRequests('all')">全部</button>
+                        <button class="filter-btn" onclick="filterRequests('pending')">待处理</button>
+                        <button class="filter-btn" onclick="filterRequests('processing')">制作中</button>
+                        <button class="filter-btn" onclick="filterRequests('completed')">已完成</button>
+                        <button class="filter-btn" onclick="filterRequests('urgent')">加急</button>
+                    </div>
+                    <div class="requests-container" id="requests-container">
+                        <div class="no-requests">暂无要求</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="success-message" id="success-message">
+        操作成功！
+    </div>
+
+    <div class="error-message" id="error-message">
+        操作失败！
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎来到渺渺的自助餐厅</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <h1>🍽️ 欢迎来到渺渺的自助餐厅</h1>
+            <div class="user-actions">
+                <div class="review-btn" onclick="openReviews()">
+                    ⭐ 评价
+                </div>
+                <div class="request-btn" onclick="openRequests()">
+                    📝 定制要求
+                </div>
+                <div class="admin-btn" onclick="goToAdmin()">
+                    🔧 管理员入口
+                </div>
+                <div class="login-btn" onclick="goToAuth()">
+                    👤 用户登录/注册
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    🛒 <span id="cart-count">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <nav class="categories">
+                <button class="category-btn active" data-category="main">主食</button>
+                <button class="category-btn" data-category="hotpot">火锅</button>
+                <button class="category-btn" data-category="stir-fry">小炒</button>
+                <button class="category-btn" data-category="fried">煎炸</button>
+                <button class="category-btn" data-category="drink">饮品</button>
+                <button class="category-btn" data-category="dessert">甜品</button>
+                <button class="category-btn" data-category="custom">自定义</button>
+            </nav>
+
+            <main class="menu">
+            <div class="menu-grid">
+                <div class="menu-item" data-category="main">
+                    <img src="images/经典汉堡.jpg" alt="经典汉堡">
+                    <div class="menu-item-content">
+                        <h3>经典汉堡</h3>
+                        <p>新鲜牛肉饼配生菜番茄</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('经典汉堡', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="main">
+                    <img src="images/香辣炸鸡.jpg" alt="香辣炸鸡">
+                    <div class="menu-item-content">
+                        <h3>香辣炸鸡</h3>
+                        <p>酥脆外皮，鲜嫩多汁</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('香辣炸鸡', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="drink">
+                    <img src="images/可口可乐.jpg" alt="可口可乐">
+                    <div class="menu-item-content">
+                        <h3>可口可乐</h3>
+                        <p>冰镇碳酸饮料</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('可口可乐', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="drink">
+                    <img src="images/鲜榨橙汁.jpg" alt="鲜榨橙汁">
+                    <div class="menu-item-content">
+                        <h3>鲜榨橙汁</h3>
+                        <p>新鲜橙子现榨</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('鲜榨橙汁', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="dessert">
+                    <img src="images/香草冰淇淋.jpg" alt="香草冰淇淋">
+                    <div class="menu-item-content">
+                        <h3>香草冰淇淋</h3>
+                        <p>香滑浓郁，夏日必备</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('香草冰淇淋', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="dessert">
+                    <img src="images/巧克力蛋糕.jpg" alt="巧克力蛋糕">
+                    <div class="menu-item-content">
+                        <h3>巧克力蛋糕</h3>
+                        <p>浓郁巧克力，甜蜜享受</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('巧克力蛋糕', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="hotpot">
+                    <img src="" alt="麻辣火锅">
+                    <div class="menu-item-content">
+                        <h3>麻辣火锅</h3>
+                        <p>麻辣鲜香，食材丰富</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('麻辣火锅', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="hotpot">
+                    <img src="" alt="番茄火锅">
+                    <div class="menu-item-content">
+                        <h3>番茄火锅</h3>
+                        <p>酸甜可口，营养丰富</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('番茄火锅', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="stir-fry">
+                    <img src="" alt="宫保鸡丁">
+                    <div class="menu-item-content">
+                        <h3>宫保鸡丁</h3>
+                        <p>经典川菜，麻辣鲜香</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('宫保鸡丁', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="stir-fry">
+                    <img src="" alt="鱼香肉丝">
+                    <div class="menu-item-content">
+                        <h3>鱼香肉丝</h3>
+                        <p>酸甜微辣，下饭神器</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('鱼香肉丝', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="fried">
+                    <img src="" alt="炸鸡排">
+                    <div class="menu-item-content">
+                        <h3>炸鸡排</h3>
+                        <p>外酥里嫩，香气扑鼻</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('炸鸡排', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="fried">
+                    <img src="" alt="炸薯条">
+                    <div class="menu-item-content">
+                        <h3>炸薯条</h3>
+                        <p>金黄酥脆，经典搭配</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn" onclick="addToCart('炸薯条', 0)">加入购物车</button>
+                </div>
+
+                <div class="menu-item" data-category="custom">
+                    <img src="" alt="自定义菜品">
+                    <div class="menu-item-content">
+                        <h3>自定义菜品</h3>
+                        <p>根据您的喜好定制专属菜品</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn custom-btn" onclick="openRequests()">定制要求</button>
+                </div>
+
+                <div class="menu-item" data-category="custom">
+                    <img src="" alt="创意甜品">
+                    <div class="menu-item-content">
+                        <h3>创意甜品</h3>
+                        <p>每日限量，为您独特制作</p>
+                        <div class="price">¥0</div>
+                    </div>
+                    <button class="add-btn custom-btn" onclick="openRequests()">定制要求</button>
+                </div>
+                <div class="no-category-selected" id="no-category-selected">
+                    <div class="empty-state">
+                        <div class="empty-icon">🍽️</div>
+                        <h3>请选择分类</h3>
+                        <p>点击左侧分类按钮查看对应美食</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="cart-overlay" id="cart-overlay">
+            <div class="cart">
+                <div class="cart-header">
+                    <h2>购物车</h2>
+                    <button class="close-btn" onclick="toggleCart()">×</button>
+                </div>
+                <div class="cart-items" id="cart-items">
+                    <p class="empty-cart">购物车为空</p>
+                </div>
+                <div class="cart-footer">
+                    <div class="total">
+                        <span>总计：</span>
+                        <span id="total-price">¥0</span>
+                    </div>
+                    <button class="checkout-btn" onclick="checkout()">结算</button>
+                    <button class="admin-view-btn" onclick="goToAdmin()">查看订单</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="success-message" id="success-message">
+            订单提交成功！
+        </div>
+
+        <div class="requests-overlay" id="requests-overlay">
+            <div class="requests-modal">
+                <div class="requests-header">
+                    <h2>📝 定制要求</h2>
+                    <button class="close-btn" onclick="closeRequestsModal()">×</button>
+                </div>
+                <div class="requests-content">
+                    <div class="request-form-section">
+                        <h3>描述您的定制要求</h3>
+                        <form id="request-form">
+                            <div class="form-group">
+                                <label>您的昵称：</label>
+                                <input type="text" id="request-author" placeholder="请输入您的昵称" required>
+                            </div>
+                            <div class="form-group">
+                                <label>联系方式（选填）：</label>
+                                <input type="text" id="request-contact" placeholder="电话/微信等">
+                            </div>
+                            <div class="form-group">
+                                <label>要求类型：</label>
+                                <select id="request-type" required>
+                                    <option value="">请选择要求类型</option>
+                                    <option value="custom-food">定制菜品</option>
+                                    <option value="modify-food">菜品调整</option>
+                                    <option value="special-need">特殊需求</option>
+                                    <option value="other">其他要求</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>详细描述：</label>
+                                <textarea id="request-description" placeholder="请详细描述您的定制要求，比如：&#10;- 希望添加什么食材&#10;- 不希望有什么食材&#10;- 口味偏好（辣度、甜度等）&#10;- 烹饪方式要求&#10;- 其他特殊需求" rows="6" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>期望完成时间：</label>
+                                <select id="request-time" required>
+                                    <option value="">请选择期望时间</option>
+                                    <option value="asap">尽快（15-30分钟）</option>
+                                    <option value="normal">正常（30-45分钟）</option>
+                                    <option value="relaxed">不急（45-60分钟）</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" id="request-urgent" value="urgent">
+                                    <span>加急处理（额外收费）</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="submit-btn">提交要求</button>
+                        </form>
+                    </div>
+                    <div class="requests-info">
+                        <h3>📋 注意事项</h3>
+                        <ul>
+                            <li>定制菜品可能需要额外时间准备</li>
+                            <li>某些特殊食材可能需要额外收费</li>
+                            <li>我们会尽量满足您的要求，但可能因食材供应有限而调整</li>
+                            <li>提交后我们会尽快与您联系确认详情</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="requests-footer">
+                    <button class="view-requests-btn" onclick="viewMyRequests()">查看我的要求</button>
+                    <button class="close-modal-btn" onclick="closeRequestsModal()">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
